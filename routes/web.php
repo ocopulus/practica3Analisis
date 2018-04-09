@@ -11,6 +11,16 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
+
+Route::get('/', 'Auth\LoginController@showlogin');
+
+Route::get('reguser', 'Auth\LoginController@showregusuario')->name('vistareguser');
+
+Route::get('home', 'HomeController@index')->name('home');
+
+Route::post('login','Auth\LoginController@login')->name('login');
+Route::post('logout','Auth\LoginController@logout')->name('logout');
+Route::post('reguser','Auth\LoginController@registrarUsuario')->name('reguser');
