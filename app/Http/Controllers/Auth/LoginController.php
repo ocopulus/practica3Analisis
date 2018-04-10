@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
+use App\Cuenta;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -69,6 +70,11 @@ class LoginController extends Controller
             'email' => request()->email,
             'password' => bcrypt(request()->password)
         ]);
-        return redirect('/')->with('status','Usuario Registrado tu codigo es: '.$usuario->id);
+
+        $cuenta = Cuenta::create([
+          'saldo' => 0,
+          'user_id' => $usuario->id
+        ]);
+        return redirect('/')->with('status','Usuario Registrado tu codigo es: '.$usuario->id.', Cuenta: '.$cuenta->id);
    }
 }

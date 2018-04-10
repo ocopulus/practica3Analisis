@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddDebitoTable extends Migration
+class CreateCredDevTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class AddDebitoTable extends Migration
      */
     public function up()
     {
-        Schema::create('debito', function (Blueprint $table) {
+        Schema::create('CredDev', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('cuenta_id');
             $table->double('monto', 8,2);
             $table->string('descripcion');
+            $table->enum('tipo', ['credito', 'devito']);
             $table->foreign('cuenta_id')
                     ->references('id')
                     ->on('cuenta')
@@ -33,6 +34,6 @@ class AddDebitoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('debito');
+        Schema::dropIfExists('CredDev');
     }
 }
