@@ -13,7 +13,16 @@ class HomeController extends Controller
 
     public function index()
     {
-    	
-    	return view('home');
-    }
+    	   	return view('home');
+	}
+	
+	public function transferencia(){
+		return view('transferencia');
+	}
+	public function credito(){
+		return view('credito');
+	}
+	public function debito(){
+		return view('debito');
+	}
 }

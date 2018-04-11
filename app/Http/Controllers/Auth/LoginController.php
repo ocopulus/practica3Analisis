@@ -36,7 +36,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales))
         {
-            return redirect()->route('home');
+            return redirect()->route('credito');
         }
 
         return back()

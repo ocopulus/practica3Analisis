@@ -13,9 +13,9 @@
 		</li>
 	
 	
-	<li><a href="#!">Tranferencia</a></li>
-	<li><a href="#!">Credito</a></li>
-	<li><a href="#!">Debito</a></li>
+	<li><a href="{{ route('transferencia') }}">Tranferencia</a></li>
+	<li><a href="{{ route('credito') }}">Credito</a></li>
+	<li><a href="{{ route('debito') }}">Debito</a></li>
 	<li><form  method="POST" action="{{ route('logout') }}">
 			{{ csrf_field() }}
 			<button class="btn btn-danger  ">Cerrar Sesion</button>

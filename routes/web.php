@@ -21,6 +21,10 @@ Route::get('reguser', 'Auth\LoginController@showregusuario')->name('vistareguser
 
 Route::get('home', 'HomeController@index')->name('home');
 
+Route::get('home/transferencia', 'HomeController@transferencia')->name('transferencia');
+Route::get('home/credito', 'HomeController@credito')->name('credito');
+Route::get('home/debito', 'HomeController@debito')->name('debito');
+
 Route::post('login','Auth\LoginController@login')->name('login');
 Route::post('logout','Auth\LoginController@logout')->name('logout');
 Route::post('reguser','Auth\LoginController@registrarUsuario')->name('reguser');
