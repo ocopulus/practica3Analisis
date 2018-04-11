@@ -1,28 +1,25 @@
-<nav class="navbar navbar-default" role="navigation">
-	<div class="container">
-		<div class="navbar-header">
-			<a id="menu-toggle" href="#" class="navbar-toggle">
-					<span class="sr-only">Toggle navigation</span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			        <span class="icon-bar"></span>
-			</a>
-  			<a class="navbar-brand" href="home.xhtml">
-  				logo
-  			</a>
-		</div>
-		<div id="sidebar-wrapper" class="sidebar-toggle">
-			<ul class="sidebar-nav">
-		    	<li>
-		      		<a href="#item1">Item 1</a>
-		    	</li>
-		    	<li>
-		      		<a href="#item2">Item 2</a>
-		    	</li>
-		    	<li>
-		      		<a href="#item3">Item 3</a>
-		    	</li>
-		  	</ul>
-		</div>
-  	</div>
-</nav>
+
+
+<ul id="slide-out" class="sidenav sidenav-fixed center">
+		
+	<li><div class="user-view">
+				<div class="background">
+				  <img src="/images/office.jpg">
+				</div>
+				<a href="#name"><span class="white-text name">{{$codigo}}</span></a>
+				<a href="#name"><span class="white-text name">{{$nombre}}</span></a>
+				<a href="#email"><span class="white-text email">{{$email}}</span></a>
+			  </div>
+		</li>
+	
+	
+	<li><a href="#!">Tranferencia</a></li>
+	<li><a href="#!">Credito</a></li>
+	<li><a href="#!">Debito</a></li>
+	<li><form  method="POST" action="{{ route('logout') }}">
+			{{ csrf_field() }}
+			<button class="btn btn-danger  ">Cerrar Sesion</button>
+		</form>
+	</li>	
+</ul>
+			

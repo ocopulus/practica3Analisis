@@ -2,14 +2,21 @@
 
 @section('head')
 	<title>Home</title>
-	<link rel="stylesheet" type="text/css" href="/css/custom/barraLateral.css">
-	<script src="/js/custom/barraLateral.js"></script>
 @endsection
-
 @section('content')
+	
 
-	
-    @include('pricipal.bienvenida')
-	
-	@include('pricipal.barraLateral')
+	@include('pricipal.navBar',array('nombre' => auth()->user()->name, 'codigo' =>  auth()->user()->id, 'email' =>  auth()->user()->email))
+
+	<main>
+			<!-- Styles 
+	/*
+		@include('pricipal.bienvenida',array('nombre' => auth()->user()->name, 'codigo' =>  auth()->user()->id ))
+	*/
+	-->
+
+	@yield('cuerpo')
+		
+	</main>
+	@include('pricipal.barraLateral',array('nombre' => auth()->user()->name, 'codigo' =>  auth()->user()->id, 'email' =>  auth()->user()->email)))
 @endsection

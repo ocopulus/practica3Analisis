@@ -7,7 +7,9 @@
 <body>
 	<div class="container">
 		<hr>
+		
 		@yield('content')
+		
 	</div>
 </body>
 </html>
