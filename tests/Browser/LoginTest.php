@@ -32,6 +32,14 @@ class LoginTest extends DuskTestCase
                     ->type('password', '1234')
                     ->press('btn')
                     ->assertPathIs('/home');
+
+
+            $browser->visit('home/credito')
+                    ->type('cuenta', '1')
+                    ->type('descripcion', 'credio test')
+                    ->type('monto', '100')
+                    ->press('action')
+                    ->assertPathIs('/home');
         });
     }
 
