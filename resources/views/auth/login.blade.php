@@ -18,7 +18,7 @@
 							<input class="form-control" 
 							type="text" 
 							name="id" 
-							
+							value="{{ old('id') }}" 
 							placeholder="Codigo">
 							{!! $errors->first('id', '<span class="help-block">:message</span>') !!}
 						</div>
@@ -27,7 +27,7 @@
 							<input class="form-control" 
 							type="text" 
 							name="user" 
-							
+							value="{{ old('user') }}" 
 							placeholder="Ingresa tu email">
 							{!! $errors->first('user', '<span class="help-block">:message</span>') !!}
 						</div>

@@ -41,7 +41,7 @@
 							name="password" 
 							placeholder="Ingresa tu Contraseña">
 						</div>
-						<button class="btn btn-primary btn-block">Registrar</button>
+						<button class="btn btn-primary btn-block" name="btn">Registrar</button>
 					</form>
 				</div>
 			</div>
