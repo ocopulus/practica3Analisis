@@ -36,5 +36,35 @@ class HomeController extends Controller
 		]);
 	}
 
-	
+	public function regCredito()
+	{
+		if(request()->cuenta == '' || request()->descripcion == '' || request()->monto == '')
+		{
+			return redirect()
+				->route('regCredito')
+				->with('status', 'Faltan Datos, por favor ingreselos');
+		}
+
+		$cuenta = Cuenta::find(request()->cuenta);
+		if($cuenta == null)
+		{
+			return redirect()
+				->route('regCredito')
+				->with('status', 'La cuenta no Existe');
+		}
+		$datos = [
+			'cuenta_id' => $cuenta->id,
+			'monto' => request()->monto,
+			'descripcion' => request()->descripcion,
+			'tipo' => 'credito'
+		];
+
+		$credito = CredDev::create($datos);
+		$cuenta->saldo = $cuenta->saldo + request()->monto;
+		$cuenta->save();
+
+		return redirect()
+			->route('home')
+			->with('status', 'Credito agregado exitosamente');
+	}
 }
