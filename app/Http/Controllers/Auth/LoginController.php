@@ -36,7 +36,7 @@ class LoginController extends Controller
 
         if(Auth::attempt($credenciales))
         {
-            return redirect()->route('credito');
+            return redirect()->route('home');
         }
 
         return back()
@@ -63,14 +63,18 @@ class LoginController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string',
         ]);
-
-        $usuario = User::create([
-            'name' => request()->name,
-            'user' => request()->user,
-            'email' => request()->email,
-            'password' => bcrypt(request()->password)
-        ]);
-
+        $usuario;
+        try{
+          $usuario = User::create([
+              'name' => request()->name,
+              'user' => request()->user,
+              'email' => request()->email,
+              'password' => bcrypt(request()->password)
+          ]);
+        } catch(\Illuminate\Database\QueryException $ex){
+          return redirect()->route('vistareguser')->with('status', 'Error el usuario o Correo ya existe');
+        }
+        
         $cuenta = Cuenta::create([
           'saldo' => 0,
           'user_id' => $usuario->id

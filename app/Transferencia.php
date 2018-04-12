@@ -11,4 +11,9 @@ class Transferencia extends Model
     protected $fillable = [
     	'cuenta_in_id', 'cuenta_out_id', 'monto'
     ];
+
+    public function cuenta()
+    {
+    	return $this->belongsTo('App\Cuenta');
+    }
 }

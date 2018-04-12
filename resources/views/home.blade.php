@@ -8,7 +8,7 @@
 
 	@include('pricipal.navBar',array('nombre' => auth()->user()->name, 'codigo' =>  auth()->user()->id, 'email' =>  auth()->user()->email,'title' => $title))
 	<main>
-		<h4>Cuenta: 1234568</h4>
+		<h4>Cuenta: {{auth()->user()->cuentas[0]->id}}</h4>
 		<!-- Styles 
 	/*
 		@include('pricipal.bienvenida',array('nombre' => auth()->user()->name, 'codigo' =>  auth()->user()->id ))

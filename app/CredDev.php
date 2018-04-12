@@ -11,4 +11,9 @@ class CredDev extends Model
     protected $fillable = [
     	'cuenta_id', 'monto', 'descripcion', 'tipo'
     ];
+
+    public function cuenta()
+    {
+        return $this->belongsTo('App\Cuenta');
+    }
 }

@@ -3,6 +3,11 @@
 @section('content')
 	<div class="row justify-content-center">
 		<div class="col-4">
+			@if (session('status'))
+			    <div class="alert alert-danger">
+			        {{ session('status') }}
+			    </div>
+			@endif
 			<div class="card">
 				<div class="card-body">
 					<h5 class="card-title">Registro de Usuario</h5>
