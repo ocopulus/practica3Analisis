@@ -18,7 +18,7 @@
 							<input class="form-control" 
 							type="text" 
 							name="id" 
-							value="{{ old('id') }}" 
+							
 							placeholder="Codigo">
 							{!! $errors->first('id', '<span class="help-block">:message</span>') !!}
 						</div>
@@ -27,7 +27,7 @@
 							<input class="form-control" 
 							type="text" 
 							name="user" 
-							value="{{ old('user') }}" 
+							
 							placeholder="Ingresa tu email">
 							{!! $errors->first('user', '<span class="help-block">:message</span>') !!}
 						</div>
@@ -39,7 +39,7 @@
 							placeholder="Ingresa tu Contraseña">
 							{!! $errors->first('password', '<span class="help-block">:message</span>') !!}
 						</div>
-						<button class="btn btn-primary btn-block">Acceder</button>
+						<button class="btn btn-primary btn-block" name="btn">Acceder</button>
 						<a class="btn btn-primary btn-block" href="{{ route('vistareguser') }}" role="button">Registrar</a>
 					</form>
 				</div>
