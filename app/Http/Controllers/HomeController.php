@@ -107,4 +107,47 @@ class HomeController extends Controller
 			->route('home')
 			->with('status', 'Devito realizado exitosamente');
 	}
+
+	public function regTransferencia()
+	{
+		if(request()->cuenta == '' || request()->monto == '')
+		{
+			return redirect()
+			->route('regTransferencia')
+			->with('status', 'Faltan Datos, por favor ingreselos');
+		}
+
+		$cuenta_us = auth()->user()->cuentas[0];
+		$cuenta = Cuenta::find(request()->cuenta);
+
+		if($cuenta == null)
+		{
+			return redirect()
+				->route('regTransferencia')
+				->with('status', 'La cuenta a transferir no Existe');
+		}
+
+		if($cuenta_us->saldo < request()->monto){
+			return redirect()
+				->route('regTransferencia')
+				->with('status', 'El monto a transferir es mayor al sado de la cuenta del usuario logeado');
+		}
+
+		$datos = [
+			'cuenta_in_id' => $cuenta->id,
+			'cuenta_out_id' => $cuenta_us->id,
+			'monto' => request()->monto
+		];
+
+		$trans = Transferencia::create($datos);
+		$cuenta_us->saldo = $cuenta_us->saldo - request()->monto;
+		$cuenta_us->save();
+		$cuenta->saldo = $cuenta->saldo + request()->monto;
+		$cuenta->save();
+
+		return redirect()
+			->route('home')
+			->with('status', 'Se a transferiado Q '.request()->monto.', a la cuenta '.request()->cuenta);
+	}
+	
 }
