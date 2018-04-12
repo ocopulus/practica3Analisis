@@ -6,6 +6,7 @@ use Auth;
 use App\Http\Controllers\Controller;
 use App\User;
 use App\Cuenta;
+use Illuminate\Support\Facades\DB;
 //use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
 class LoginController extends Controller
@@ -64,6 +65,12 @@ class LoginController extends Controller
             'password' => 'required|string',
         ]);
         $usuario;
+        $user = DB::table('users')->where('user', request()->user)->first();
+        $user2 = DB::table('users')->where('email', request()->email)->first();
+        if($user != null || $user2 != null)
+        {
+          return redirect()->route('vistareguser')->with('status', 'Error el usuario o Correo ya existe');
+        }
         try{
           $usuario = User::create([
               'name' => request()->name,
