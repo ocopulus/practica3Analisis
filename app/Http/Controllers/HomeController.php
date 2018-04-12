@@ -67,4 +67,44 @@ class HomeController extends Controller
 			->route('home')
 			->with('status', 'Credito agregado exitosamente');
 	}
+
+	public function regDevito()
+	{
+		if(request()->cuenta == '' || request()->descripcion == '' || request()->monto == '')
+		{
+			return redirect()
+				->route('regDevito')
+				->with('status', 'Faltan Datos, por favor ingreselos');
+		}
+
+		$cuenta = Cuenta::find(request()->cuenta);
+		if($cuenta == null)
+		{
+			return redirect()
+				->route('regDevito')
+				->with('status', 'La cuenta no Existe');
+		}
+
+		if($cuenta->saldo < request()->monto)
+		{
+			return redirect()
+				->route('regDevito')
+				->with('status', 'Error el monto a devitar es mayor al saldo de la cuneta papu ;V');
+		}
+
+		$datos = [
+			'cuenta_id' => $cuenta->id, 
+			'monto' => request()->monto, 
+			'descripcion' => request()->descripcion, 
+			'tipo'=>'devito'
+		];
+
+		$credito = CredDev::create($datos);
+		$cuenta->saldo = $cuenta->saldo - request()->monto;
+		$cuenta->save();
+
+		return redirect()
+			->route('home')
+			->with('status', 'Devito realizado exitosamente');
+	}
 }
