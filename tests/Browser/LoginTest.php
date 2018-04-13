@@ -40,12 +40,7 @@ class LoginTest extends DuskTestCase
                     ->press('action')
                     ->assertPathIs('/home');
 
-            //Debajo de este comentario pone tus pruebas chiqui
-
-
-            //De aqui para habajo no toques nada
-
-            $browser->visit('home')
+            $browser->visit('/home')
                     ->assertSee('Q');
 
             $browser->visit('home')
