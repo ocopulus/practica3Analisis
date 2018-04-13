@@ -40,7 +40,20 @@ class LoginTest extends DuskTestCase
                     ->press('action')
                     ->assertPathIs('/home');
 
-            $browser->visit('/home')
+            $browser->visit('home/debito')
+                    ->type('cuenta', '1')
+                    ->type('descripcion', 'credio test')
+                    ->type('monto', '50')
+                    ->press('action')
+                    ->assertPathIs('/home');
+
+            $browser->visit('home/transferencia')
+                    ->type('cuenta', '2')
+                    ->type('monto', '25')
+                    ->press('action')
+                    ->assertPathIs('/home');
+
+            $browser->visit('home')
                     ->assertSee('Q');
 
             $browser->visit('home')
