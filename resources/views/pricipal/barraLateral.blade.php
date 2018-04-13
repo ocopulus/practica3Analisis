@@ -19,7 +19,7 @@
 	<li><a href="{{ route('home') }}">Saldo</a></li>
 	<li><form  method="POST" action="{{ route('logout') }}">
 			{{ csrf_field() }}
-			<button class="btn btn-danger  ">Cerrar Sesion</button>
+			<button class="btn btn-danger  " name="salir">Cerrar Sesion</button>
 		</form>
 	</li>	
 </ul>
