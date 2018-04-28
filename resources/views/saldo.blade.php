@@ -12,7 +12,7 @@
 	<div class="card-content ">
 	  <span class="card-title">Saldo</span>
 		<div class="row">
-			<h4>Q {{$saldo}}</h4>
+			<h4>{{$saldo}}</h4>
 		</div>
 		<div class="card-action">		  
 		</div>

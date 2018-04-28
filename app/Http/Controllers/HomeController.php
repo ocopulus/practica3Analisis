@@ -31,7 +31,7 @@ class HomeController extends Controller
 	}
 	public function saldo() {
 		return view('saldo', [
-			'saldo' => auth()->user()->cuentas[0]->saldo, 
+			'saldo' =>'Q '.auth()->user()->cuentas[0]->saldo, 
 			'titulo' => 'Saldo'
 		]);
 	}
